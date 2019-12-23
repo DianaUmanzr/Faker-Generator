@@ -360,6 +360,20 @@ public class FakerGen {
                 break;
             }
           }
+          else if(f.isAnnotationPresent(FakeLebowski.class)) {
+            FakeLebowski fc = f.getAnnotation(FakeLebowski.class);
+            switch (fc.value()) {
+              case ACTOR:
+                f.set(data, faker.lebowski().actor());
+                break;
+              case CHARACTER:
+                f.set(data, faker.lebowski().character());
+                break;
+              case QUOTE:
+                f.set(data, faker.lebowski().quote());
+                break;
+            }
+          }
         } catch (IllegalAccessException e) {
           log.debug("Exception when we tried to do something crazy", e);
         }

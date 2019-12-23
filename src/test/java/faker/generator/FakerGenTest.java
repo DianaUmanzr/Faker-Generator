@@ -234,4 +234,14 @@ public class FakerGenTest {
     });
   }
 
+  @Test
+  public void testLebowski() {
+    Optional<Lebowski> c = FakerGen.create(Lebowski.class);
+    assertTrue(c.isPresent());
+    c.ifPresent(co -> {
+      assertNotNull(co.getActor());
+      assertNotNull(co.getCharacter());
+      assertNotNull(co.getQuote());
+    });
+  }
 }
